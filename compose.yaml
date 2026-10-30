@@ -1,0 +1,13 @@
+services:
+  web:
+    image: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./site:/usr/share/nginx/html:ro
+
+  tester:
+    image: curlimages/curl
+    command: ["curl", "-s", "http://web"]
+    depends_on:
+      - web
