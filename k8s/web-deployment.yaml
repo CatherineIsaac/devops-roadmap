@@ -36,3 +36,11 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 10
             failureThreshold: 3
+          volumeMounts:
+            - name: content
+              mountPath: /usr/share/nginx/html
+              readOnly: true
+      volumes:
+        - name: content
+          configMap:
+            name: web-content
